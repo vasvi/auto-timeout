@@ -5,6 +5,7 @@ import { AppModule } from './app/app.module';
 import { LoginComponent } from './login/login.component';
 import { AppInitComponent } from './app-init.component';
 import { LoginModule } from './login/login.module';
+import { AutoLogoutService } from './services/auto-logout.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LoginModule } from './login/login.module';
     LoginModule
   ],
   providers: [
+    AutoLogoutService
   ],
   bootstrap: [AppInitComponent]
 })
