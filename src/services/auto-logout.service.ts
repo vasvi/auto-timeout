@@ -1,13 +1,20 @@
 import { Injectable } from "@angular/core";
 import { timer } from 'rxjs';
+import { Router } from "@angular/router";
+import { MatDialog } from '@angular/material/dialog';
+import { AutoLogoutModalComponent } from '../auto-logout-modal/auto-logout-modal.component';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AutoLogoutService {
     private lastActivityTime: Date;
+    private timeoutModalVisible = false;
 
-    constructor() {
+    constructor(
+        private router: Router,
+        private dialog: MatDialog
+    ) {
 
     }
 
@@ -20,12 +27,28 @@ export class AutoLogoutService {
 
             const diff = Math.round( (new Date().getTime() - this.lastActivityTime.getTime()) / 1000 / 60);
             console.log(diff);
-            if ( diff >= 2) {
-                alert("timeout");
+            if (diff >= 2 && !this.timeoutModalVisible) {
+                console.log('TIMEOUT');
+                this.showTimeoutModal();
                 // Todo: Remove this alert and add a modal with option to renew session
-                // Todo: Redirect user to login page if not responded on the modal in 60 seconds.  
+                // Todo: Redirect user to login page if not responded on the modal in 60 seconds.
             }
         })
+    }
+
+    showTimeoutModal = () => {
+        this.timeoutModalVisible = true;
+        const dialogRef = this.dialog.open(AutoLogoutModalComponent);
+
+        dialogRef.afterClosed().subscribe(val => {
+            console.log("after closed" + val);
+            this.timeoutModalVisible = false;
+
+            if(!val) {
+                this.router.navigate(['/']);
+            }
+        })
+
     }
 
     updateLastActive = () => {

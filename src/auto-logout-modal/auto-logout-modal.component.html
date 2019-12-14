@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>
+    Session timeout
+</h2>
+<mat-dialog-content>
+    Due to inactivity, your session has expired.
+    Please click on below button in {{ this.timeLeft }} seconds to keep the session going.
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true"> Ok </button>
+</mat-dialog-actions>
