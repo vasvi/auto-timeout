@@ -8,6 +8,7 @@ import { AutoLogoutService } from './services/auto-logout.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AutoLogoutModalComponent } from './auto-logout-modal/auto-logout-modal.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AutoLogoutModalComponent } from './auto-logout-modal/auto-logout-modal.
     AppModule,
     LoginModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     AutoLogoutService

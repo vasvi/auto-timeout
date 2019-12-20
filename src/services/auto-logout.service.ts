@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { timer } from 'rxjs';
+import { timer, Subscription } from 'rxjs';
 import { Router } from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import { AutoLogoutModalComponent } from '../auto-logout-modal/auto-logout-modal.component';
@@ -10,6 +10,7 @@ import { AutoLogoutModalComponent } from '../auto-logout-modal/auto-logout-modal
 export class AutoLogoutService {
     private lastActivityTime: Date;
     private timeoutModalVisible = false;
+    private timer$: Subscription;
 
     constructor(
         private router: Router,
@@ -22,7 +23,7 @@ export class AutoLogoutService {
         console.log('start timer called');
         this.lastActivityTime = new Date();
 
-        const source = timer(1000, 10000).subscribe(val => {
+        this.timer$ = timer(1000, 10000).subscribe(val => {
             // Check if last activity time is more than the defined time.
 
             const diff = Math.round( (new Date().getTime() - this.lastActivityTime.getTime()) / 1000 / 60);
@@ -34,6 +35,10 @@ export class AutoLogoutService {
                 // Todo: Redirect user to login page if not responded on the modal in 60 seconds.
             }
         })
+    }
+
+    stopTimer = () => {
+        this.timer$.unsubscribe();
     }
 
     showTimeoutModal = () => {

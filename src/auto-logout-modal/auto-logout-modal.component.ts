@@ -11,12 +11,10 @@ export class AutoLogoutModalComponent implements OnInit {
     private timerSubs: Subscription;
 
     constructor(private dialog: MatDialog) {
-
     }
 
     ngOnInit() {
         this.timerSubs = timer(1000, 1000).subscribe(val => {
-            console.log(val);
             this.timeLeft = 60 - val;
             if (this.timeLeft === 0) {
                 this.timerSubs.unsubscribe();
