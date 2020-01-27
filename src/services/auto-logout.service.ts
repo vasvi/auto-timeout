@@ -31,8 +31,6 @@ export class AutoLogoutService {
             if (diff >= 2 && !this.timeoutModalVisible) {
                 console.log('TIMEOUT');
                 this.showTimeoutModal();
-                // Todo: Remove this alert and add a modal with option to renew session
-                // Todo: Redirect user to login page if not responded on the modal in 60 seconds.
             }
         })
     }

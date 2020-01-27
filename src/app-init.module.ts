@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule
   ],
   providers: [
-    AutoLogoutService
+    //AutoLogoutService
   ],
   entryComponents: [
     AutoLogoutModalComponent
