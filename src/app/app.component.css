@@ -1,11 +1,12 @@
+:host {
+    text-align: center;
+}
 Header {
     background: #333;
     color: #fff;
-    text-align: center;
     padding: 10px;
 }
 
 .content > h3 {
-    text-align: center;
     padding-top: 50px;
 }

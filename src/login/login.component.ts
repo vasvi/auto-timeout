@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutoLogoutService } from '../services/auto-logout.service';
+import { FormGroup } from '@angular/forms';
 
 @Component ({
     selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent {
 
     }
     title = 'Application login';
+    loginForm = new FormGroup({});
 
     public navigateToHome() {
         this.router.navigate(['home']);

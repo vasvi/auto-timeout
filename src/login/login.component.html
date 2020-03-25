@@ -1,14 +1,17 @@
 <div class="login">
     <h3>Login</h3>
-
-    <form>
-        <div>
-            <input type="text" name="username" value="vasvi" />
-        </div>
-        <div>
-            <input type="password" name="password" value="abcabc" />
-        </div>
-
-        <button mat-button (click)="navigateToHome()">Submit</button>
-    </form>
+    <div class="form-container">
+        <form id="login-form" [formGroup]="loginForm">
+            <mat-form-field>
+                <mat-label id="name">Name</mat-label>
+                <input matInput required>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label id="password">Password</mat-label>
+                <input type="password" matInput required>
+            </mat-form-field>
+            <button mat-raised-button [disabled]="!loginForm.valid" (click)="navigateToHome()">Submit</button>
+        </form>
+    </div>
 </div>
