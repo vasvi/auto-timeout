@@ -4,12 +4,12 @@
         <form id="login-form" [formGroup]="loginForm">
             <mat-form-field>
                 <mat-label id="name">Name</mat-label>
-                <input matInput required>
+                <input [formControl]="name" matInput required>
             </mat-form-field>
             
             <mat-form-field>
                 <mat-label id="password">Password</mat-label>
-                <input type="password" matInput required>
+                <input type="password" [formControl]="password" matInput required>
             </mat-form-field>
             <button mat-raised-button [disabled]="!loginForm.valid" (click)="navigateToHome()">Submit</button>
         </form>

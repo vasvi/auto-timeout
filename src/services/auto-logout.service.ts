@@ -3,6 +3,7 @@ import { timer, Subscription } from 'rxjs';
 import { Router } from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import { AutoLogoutModalComponent } from '../auto-logout-modal/auto-logout-modal.component';
+import { AutoTimeoutConstants } from '../Constants';
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +29,7 @@ export class AutoLogoutService {
 
             const diff = Math.round( (new Date().getTime() - this.lastActivityTime.getTime()) / 1000 / 60);
             console.log(diff);
-            if (diff >= 2 && !this.timeoutModalVisible) {
+            if (diff >= AutoTimeoutConstants.idleWaitTime && !this.timeoutModalVisible) {
                 console.log('TIMEOUT');
                 this.showTimeoutModal();
             }

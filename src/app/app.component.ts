@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AutoLogoutService } from '../services/auto-logout.service';
-
+import { AutoTimeoutConstants } from '../Constants';
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
@@ -10,6 +10,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private autoLogoutService: AutoLogoutService) 
   {}
   title = 'auto-timeout';
+  idleWaitTime = AutoTimeoutConstants.idleWaitTime;
 
   ngOnInit() {
     this.autoLogoutService.startTimer();
