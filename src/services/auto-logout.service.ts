@@ -60,4 +60,12 @@ export class AutoLogoutService {
         this.lastActivityTime = new Date();
     }
 
+    /** This function is only needed for unit test */
+    getLastActiveDate = () => {
+        return this.lastActivityTime;
+    }
+
+    getTimeoutModalVisible = () => {
+        return this.timeoutModalVisible;
+    }
 }

@@ -9,7 +9,7 @@ import { AutoTimeoutConstants } from '../Constants';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private autoLogoutService: AutoLogoutService) 
   {}
-  title = 'auto-timeout';
+  title = 'AutoTimeout home';
   idleWaitTime = AutoTimeoutConstants.idleWaitTime;
 
   ngOnInit() {
